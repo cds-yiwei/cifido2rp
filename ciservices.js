@@ -426,7 +426,7 @@ function updateRPMaps() {
 	return tm.getAccessToken(null)
 	.then((access_token) => {
 		return myfetch(
-			process.env.CI_TENANT_ENDPOINT + "/v2.0/factors/discover/fido2",
+			process.env.CI_TENANT_ENDPOINT + "/config/v2.0/factors/fido2/relyingparties",
 			{
 				method: "GET",
 				headers: {
@@ -441,7 +441,7 @@ function updateRPMaps() {
 		rpIdMap = [];
 		// there is a response message schema change happening - tolerate the old and new...
 		var rpWrapper = (discoverResponse.fido2 != null ? discoverResponse.fido2 : discoverResponse);
-		rpWrapper.relyingParties.forEach((rp) => {
+		rpWrapper.relyingparties.forEach((rp) => {
 			rpUuidMap[rp.id] = rp.rpId;
 			rpIdMap[rp.rpId] = rp.id;
 		});

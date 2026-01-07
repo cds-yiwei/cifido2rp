@@ -41,7 +41,7 @@ oidcClient.Issuer.discover(process.env.CI_TENANT_ENDPOINT + "/oidc/endpoint/defa
 	let myClient = new isvIssuer.Client({
 		client_id: process.env.OIDC_CLIENT_ID,
 		client_secret: process.env.OIDC_CLIENT_SECRET,
-		redirect_uris: [ "https://"+process.env.RPID+ (process.env.LOCAL_SSL_SERVER == "true" ? (":"+process.env.LOCAL_SSL_PORT) : "") + "/callback" ],
+		redirect_uris: [ "https://"+process.env.SERVER_URL+ (process.env.LOCAL_SSL_SERVER == "true" ? (":"+process.env.LOCAL_SSL_PORT) : "") + "/callback" ],
 		response_types: ['code']
 	});
 
